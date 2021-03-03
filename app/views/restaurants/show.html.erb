@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 
 <p>
   <strong>Name:</strong>
@@ -15,5 +17,23 @@
   <%= @restaurant.category %>
 </p>
 
+<p>
+  <strong>Phone Number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Review(s):</strong>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        rating : <%= review.rating %> | <%= review.content %>
+      </li>
+    <% end %>
+
+  </ul>
+</p>
+
+<%= link_to 'Add review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
